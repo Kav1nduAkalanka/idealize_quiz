@@ -142,6 +142,7 @@
         }
 
         @media (max-width: 768px) {
+
             th,
             td {
                 padding: 12px 8px;
@@ -150,6 +151,7 @@
         }
 
         @media (max-width: 480px) {
+
             th,
             td {
                 padding: 10px 6px;
@@ -184,7 +186,7 @@
             color: #9fffd6;
             font-size: 1.1em;
         }
-        
+
         .time-cell {
             color: #c6d2ff;
         }
@@ -193,7 +195,8 @@
 
 <body>
     <audio controls loop preload="auto" style="display: none;" id="bg-music">
-        <source src="https://raw.githubusercontent.com/Kav1nduAkalanka/idealize_quiz/main/quiz_bgm.mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/Kav1nduAkalanka/idealize_quiz/main/quiz_bgm.mp3"
+            type="audio/mpeg">
     </audio>
     <button class="sound-toggle" id="play-toggle" type="button" aria-label="Toggle music">🔊</button>
     <div class="card">
@@ -217,7 +220,7 @@
 
     <script>
        // Updated API URL
-       const API_URL = "https://script.google.com/macros/s/AKfycbwyK1XY9cU0gFUx2re3_dnlqFctGUfCz1euKYJXhsR3PO9lY4spIOIEy0r7zJxyZ47l/exec";
+       const API_URL = "https://script.google.com/macros/s/AKfycbzrMCA929P7C-r_rA67oguEZebdPThVHgfj22xSMcrdnCSTNiyn3DJWgSFQT5srGWoi/exec";
 
         async function fetchLeaderboard() {
             try {
