@@ -216,11 +216,11 @@
     </div>
 
     <script>
-       const API_URL = "https://script.google.com/macros/s/AKfycbxHThHDNqJ2QjlGtBjTmMVQuM_H-onYE6R2kO2adZP-x6vXQJjHRkRsQrm49T_c2NvT/exec";
+       // Updated API URL
+       const API_URL = "https://script.google.com/macros/s/AKfycbwyK1XY9cU0gFUx2re3_dnlqFctGUfCz1euKYJXhsR3PO9lY4spIOIEy0r7zJxyZ47l/exec";
 
         async function fetchLeaderboard() {
             try {
-                // The ?t= trick forces the browser to pull fresh data every time
                 const response = await fetch(API_URL + "?t=" + new Date().getTime());
                 const data = await response.json();
 
@@ -228,7 +228,6 @@
             } catch (error) {
                 console.error("Error pulling leaderboard data:", error);
                 const tbody = document.getElementById('leaderboard-body');
-                // Only show error text if the board is empty, avoids flashing during random Wi-Fi blips
                 if (tbody.children.length === 1 && tbody.textContent.includes("Loading")) {
                     tbody.innerHTML = '<tr><td colspan="4" style="color: #ff9bcf;">Error loading scores. Retrying...</td></tr>';
                 }
@@ -250,17 +249,11 @@
 
                 let rankClass = rank <= 3 ? `rank-${rank}` : '';
 
-                // Strip the "In time ()" wrapper so it just shows "7m 53s"
-                let cleanTime = row.timeString;
-                if (cleanTime.includes('(') && cleanTime.includes(')')) {
-                    cleanTime = cleanTime.split('(')[1].split(')')[0]; 
-                }
-
                 tr.innerHTML = `
             <td class="${rankClass}">#${rank}</td>
             <td style="text-align: left;">${row.identifier}</td>
-            <td class="time-cell">⏱️ ${cleanTime}</td>
-            <td class="score-cell">${row.score}</td>
+            <td class="time-cell">⏱️ ${row.timeString}</td>
+            <td class="score-cell">${row.score}%</td>
           `;
                 tbody.appendChild(tr);
             });
