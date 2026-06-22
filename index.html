@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html style="height: 100%;">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,41 +11,25 @@
             --ink: #f2f6ff;
             --cyan: #7fd7ff;
             --pink: #ff9bcf;
-            --violet: #b89bff;
             --glass: rgba(10, 12, 26, 0.72);
             --glass-soft: rgba(10, 12, 26, 0.58);
             --glass-border: rgba(255, 255, 255, 0.18);
         }
 
         body {
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-image: url('https://raw.githubusercontent.com/Kav1nduAkalanka/idealize_quiz/main/background.webp');
             background-size: cover;
             background-attachment: fixed;
-            background-repeat: no-repeat;
             background-position: center;
             color: var(--ink);
-            text-align: center;
-            padding: 40px;
             margin: 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #080a1e;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 20px;
-                background-attachment: scroll;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
+            padding: 20px;
         }
 
         .card {
@@ -55,232 +38,168 @@
             border: 1px solid var(--glass-border);
             border-radius: 22px;
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-            width: min(92vw, 920px);
-            margin: 0 auto;
-            padding: 32px 34px 26px;
+            width: 100%;
+            max-width: 920px;
+            padding: 30px;
         }
 
-        @media (max-width: 768px) {
-            .card {
-                max-width: 95%;
-                padding: 20px;
-                border-radius: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .card {
-                padding: 15px;
-                border-radius: 14px;
-                max-width: 100%;
-                border: 1px solid var(--glass-border);
-            }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         h2 {
-            font-family: 'Orbitron', 'Montserrat', sans-serif;
-            color: var(--ink);
-            margin-bottom: 16px;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
             font-size: 2em;
-            letter-spacing: 0.02em;
         }
 
+        .live-indicator {
+            font-size: 0.9em;
+            color: #ff4d4d;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ff4d4d;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 77, 77, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+        }
+
+        /* Sound Toggle Styles */
         .sound-toggle {
             position: fixed;
-            top: 18px;
-            left: 18px;
-            width: 54px;
-            height: 54px;
+            top: 20px; left: 20px;
+            width: 50px; height: 50px;
             border-radius: 50%;
+            background: var(--glass-soft);
             border: 1px solid var(--glass-border);
-            background: var(--glass-soft);
-            color: var(--ink);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6em;
-            cursor: pointer;
-            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+            color: white; font-size: 1.5em;
+            cursor: pointer; z-index: 100;
             backdrop-filter: blur(10px);
-            z-index: 10;
         }
 
-        .sound-toggle:active {
-            transform: scale(0.98);
-        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
+        th { background: var(--glass-soft); text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
+        tbody tr:hover { background: rgba(255, 255, 255, 0.08); }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 16px 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-            color: var(--ink);
-        }
-
-        th {
-            background: var(--glass-soft);
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 0.08em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        tbody tr {
-            background: transparent;
-        }
-
-        tbody tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        tbody tr:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        @media (max-width: 768px) {
-
-            th,
-            td {
-                padding: 12px 8px;
-                font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            th,
-            td {
-                padding: 10px 6px;
-                font-size: 0.8em;
-            }
-
-            th {
-                font-size: 0.75em;
-            }
-        }
-
-        .rank-1 {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #ffd65a;
-        }
-
-        .rank-2 {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: var(--cyan);
-        }
-
-        .rank-3 {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: var(--pink);
-        }
-
-        .score-cell {
-            font-weight: bold;
-            color: #9fffd6;
-            font-size: 1.1em;
-        }
-
-        .time-cell {
-            color: #c6d2ff;
+        .rank-1 { color: #ffd65a; font-weight: 800; font-size: 1.2em; }
+        .rank-2 { color: var(--cyan); font-weight: 700; }
+        .rank-3 { color: var(--pink); font-weight: 700; }
+        .score-cell { color: #9fffd6; font-weight: bold; }
+        
+        @media (max-width: 600px) {
+            th, td { padding: 10px; font-size: 0.85em; }
+            h2 { font-size: 1.5em; }
         }
     </style>
 </head>
-
 <body>
-    <audio controls loop preload="auto" style="display: none;" id="bg-music">
-        <source src="https://raw.githubusercontent.com/Kav1nduAkalanka/idealize_quiz/main/quiz_bgm.mp3"
-            type="audio/mpeg">
+    
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://raw.githubusercontent.com/Kav1nduAkalanka/idealize_quiz/main/quiz_bgm.mp3" type="audio/mpeg">
     </audio>
-    <button class="sound-toggle" id="play-toggle" type="button" aria-label="Toggle music">🔊</button>
+    <button class="sound-toggle" id="play-toggle">🔇</button>
+
     <div class="card">
-        <h2>🏆 Leaderboard</h2>
+        <div class="header-container">
+            <h2>🏆 Leaderboard</h2>
+            <div class="live-indicator"><div class="live-dot"></div> LIVE</div>
+        </div>
         <table>
             <thead>
                 <tr>
                     <th>Rank</th>
-                    <th>Name</th>
+                    <th style="text-align: left;">Name</th>
                     <th>Time</th>
                     <th>Score</th>
                 </tr>
             </thead>
             <tbody id="leaderboard-body">
-                <tr>
-                    <td colspan="4">Loading live scores...</td>
-                </tr>
+                <tr><td colspan="4">Establishing connection...</td></tr>
             </tbody>
         </table>
     </div>
 
     <script>
-       // Updated API URL
-       const API_URL = "https://script.google.com/macros/s/AKfycbyj2pmsPLW9gNA2R7hn9SEBwB46jiYxeV-fkzqdgzghS-g_dwOSFod0hga6qtees21Z/exec";
+        // ==========================================
+        // EASY CONFIGURATION AREA
+        // ==========================================
+        const CONFIG = {
+            // PASTE YOUR NEW GOOGLE APPS SCRIPT WEB APP URL HERE:
+            API_URL: "https://script.google.com/macros/s/AKfycbyZ7uiQWinlffAVqHVDPb6ojZv5jUmYBfQMdPtBytOZd3-PD7tiDNR5PZxSNnYsvV2k/exec",
+            REFRESH_RATE_MS: 5000 // How often to refresh (5000 = 5 seconds)
+        };
 
+        // ==========================================
+        // LOGIC
+        // ==========================================
         async function fetchLeaderboard() {
             try {
-                const response = await fetch(API_URL + "?t=" + new Date().getTime());
+                // Prevent browser caching by adding a timestamp parameter
+                const response = await fetch(CONFIG.API_URL + "?t=" + new Date().getTime());
                 const data = await response.json();
-
                 updateTable(data);
             } catch (error) {
-                console.error("Error pulling leaderboard data:", error);
-                const tbody = document.getElementById('leaderboard-body');
-                if (tbody.children.length === 1 && tbody.textContent.includes("Loading")) {
-                    tbody.innerHTML = '<tr><td colspan="4" style="color: #ff9bcf;">Error loading scores. Retrying...</td></tr>';
-                }
+                console.error("Leaderboard fetch error:", error);
             }
         }
 
         function updateTable(data) {
             const tbody = document.getElementById('leaderboard-body');
-            tbody.innerHTML = '';
-
+            
             if (!data || data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4">No scores submitted yet. Waiting for first entry...</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4">Awaiting first successful submission...</td></tr>';
                 return;
             }
 
+            tbody.innerHTML = ''; // Clear table
+            
             data.forEach((row, index) => {
                 const rank = index + 1;
-                const tr = document.createElement('tr');
-
                 let rankClass = rank <= 3 ? `rank-${rank}` : '';
 
-                tr.innerHTML = `
-            <td class="${rankClass}">#${rank}</td>
-            <td style="text-align: left;">${row.identifier}</td>
-            <td class="time-cell">⏱️ ${row.timeString}</td>
-            <td class="score-cell">${row.score}%</td>
-          `;
-                tbody.appendChild(tr);
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="${rankClass}">#${rank}</td>
+                        <td style="text-align: left; font-weight: 500;">${row.identifier}</td>
+                        <td style="color: #c6d2ff;">⏱️ ${row.timeString}</td>
+                        <td class="score-cell">${row.score}%</td>
+                    </tr>
+                `;
             });
         }
 
+        // Audio Controls
         const audio = document.getElementById('bg-music');
         const playToggle = document.getElementById('play-toggle');
-
         playToggle.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
                 playToggle.textContent = '🔊';
-                playToggle.setAttribute('aria-label', 'Mute music');
             } else {
                 audio.pause();
                 playToggle.textContent = '🔇';
-                playToggle.setAttribute('aria-label', 'Play music');
             }
         });
 
-        // Fetch immediately on load, then poll every 5 seconds
+        // Initialize and poll
         fetchLeaderboard();
-        setInterval(fetchLeaderboard, 5000);
+        setInterval(fetchLeaderboard, CONFIG.REFRESH_RATE_MS);
     </script>
 </body>
-
 </html>
