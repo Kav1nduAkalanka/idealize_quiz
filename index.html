@@ -323,7 +323,8 @@
 
             tbody.innerHTML = ''; // Clear table
 
-            data.forEach((row, index) => {
+            // The slice(0, 10) ensures only the top 10 rows are rendered
+            data.slice(0, 10).forEach((row, index) => {
                 const rank = index + 1;
                 let rankClass = rank <= 3 ? `rank-${rank}` : '';
 
